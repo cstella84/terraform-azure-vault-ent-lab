@@ -25,7 +25,7 @@ module "key_vault" {
 
 # Create virtual network
 module "vnet" {
-  source = "./modules.vnet"
+  source = "./modules/vnet"
 
   abs_address_prefix   = var.abs_address_prefix
   address_space        = var.address_space
