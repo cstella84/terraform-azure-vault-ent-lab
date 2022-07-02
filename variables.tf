@@ -1,3 +1,15 @@
+variable "abs_address_prefix" {
+  default     = "10.0.3.0/24"
+  description = "Azure Bastion Service Virtual Network subnet address prefix (set to \"\" to disable ABS creation)"
+  type        = string
+}
+
+variable "address_space" {
+  default     = "10.0.0.0/16"
+  description = "Virtual Network address space"
+  type        = string
+}
+
 variable "common_tags" {
   default     = {}
   description = "(Optional) Map of common tags for all taggable resources"
@@ -22,6 +34,12 @@ variable "instance_type" {
   type        = string
 }
 
+variable "key_vault_cert" {
+  default     = filebase64("certificate-to-import.pfx")
+  description = "Base64 encoded .pfx certificate file to be imported into key vault"
+  type        = string
+}
+
 variable "key_vault_id" {
   description = "Azure Key Vault containing TLS certificates (will also be used to store Vault seal secret & license)"
   type        = string
@@ -34,6 +52,12 @@ variable "key_vault_vm_tls_secret_id" {
 
 variable "key_vault_ssl_cert_secret_id" {
   description = "Secret ID of Key Vault Certificate for load balancer SSL"
+  type        = string
+}
+
+variable "lb_address_prefix" {
+  default     = "10.0.2.0/24"
+  description = "Load balancer Virtual Network subnet address prefix"
   type        = string
 }
 
@@ -76,15 +100,15 @@ variable "leader_tls_servername" {
   description = "One of the DNS Subject Alternative Names on the cert in key_vault_vm_tls_secret_id"
 }
 
-variable "resource_group" {
-  description = "Azure resource group in which resources will be deployed"
+# variable "resource_group" {
+#   description = "Azure resource group in which resources will be deployed"
 
-  type = object({
-    name     = string
-    location = string
-    id       = string
-  })
-}
+#   type = object({
+#     name     = string
+#     location = string
+#     id       = string
+#   })
+# }
 
 variable "resource_name_prefix" {
   description = "Prefix applied to resource names (e.g. providing \"dev\" will create a VM Scale Set named \"dev-vault\")"
@@ -137,6 +161,12 @@ variable "ultra_ssd_enabled" {
   default     = true
   description = "Enable VM scale set Ultra SSD data disks compatibility"
   type        = bool
+}
+
+variable "vault_address_prefix" {
+  default     = "10.0.1.0/24"
+  description = "VM Virtual Network subnet address prefix"
+  type        = string
 }
 
 variable "vault_application_security_group_ids" {
