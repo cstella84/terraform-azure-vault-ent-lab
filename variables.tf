@@ -99,6 +99,12 @@ variable "leader_tls_servername" {
   description = "One of the DNS Subject Alternative Names on the cert in key_vault_vm_tls_secret_id"
 }
 
+variable "location" {
+  default     = "East US"
+  description = "Azure region for deployment"
+  type        = string
+}
+
 # variable "resource_group" {
 #   description = "Azure resource group in which resources will be deployed"
 
