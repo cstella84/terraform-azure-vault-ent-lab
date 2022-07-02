@@ -96,7 +96,7 @@ module "load_balancer" {
   resource_group               = module.resource_group.resource_group
   resource_name_prefix         = var.resource_name_prefix
   sku_capacity                 = var.lb_sku_capacity
-  subnet_id                    = var.lb_subnet_id
+  subnet_id                    = module.vnet.lb_subnet_id
   zones                        = var.zones
 
   identity_ids = [
@@ -107,7 +107,7 @@ module "load_balancer" {
 module "vm" {
   source = "./modules/vm"
 
-  application_security_group_ids = var.vault_application_security_group_ids
+  application_security_group_ids = module.vnet.vault_application_security_group_ids
   common_tags                    = var.common_tags
   health_check_path              = var.health_check_path
   instance_count                 = var.instance_count
@@ -117,7 +117,7 @@ module "vm" {
   user_supplied_source_image_id  = var.user_supplied_source_image_id
   scale_set_name                 = local.vm_scale_set_name
   ssh_public_key                 = var.ssh_public_key
-  subnet_id                      = var.vault_subnet_id
+  subnet_id                      = module.vnet.vault_subnet_id
   ultra_ssd_enabled              = var.ultra_ssd_enabled
   user_data                      = module.user_data.vault_userdata_base64_encoded
   zones                          = var.zones
