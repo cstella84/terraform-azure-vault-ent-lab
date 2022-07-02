@@ -49,10 +49,10 @@ variable "key_vault_vm_tls_secret_id" {
   description = "ID of Key Vault Secret where VM TLS cert bundle is stored"
 }
 
-variable "key_vault_ssl_cert_secret_id" {
-  description = "Secret ID of Key Vault Certificate for load balancer SSL"
-  type        = string
-}
+# variable "key_vault_ssl_cert_secret_id" {
+#   description = "Secret ID of Key Vault Certificate for load balancer SSL"
+#   type        = string
+# }
 
 variable "lb_address_prefix" {
   default     = "10.0.2.0/24"
