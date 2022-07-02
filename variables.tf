@@ -39,15 +39,15 @@ variable "key_vault_cert" {
   type        = string
 }
 
-variable "key_vault_id" {
-  description = "Azure Key Vault containing TLS certificates (will also be used to store Vault seal secret & license)"
-  type        = string
-}
+# variable "key_vault_id" {
+#   description = "Azure Key Vault containing TLS certificates (will also be used to store Vault seal secret & license)"
+#   type        = string
+# }
 
-variable "key_vault_vm_tls_secret_id" {
-  type        = string
-  description = "ID of Key Vault Secret where VM TLS cert bundle is stored"
-}
+# variable "key_vault_vm_tls_secret_id" {
+#   type        = string
+#   description = "ID of Key Vault Secret where VM TLS cert bundle is stored"
+# }
 
 # variable "key_vault_ssl_cert_secret_id" {
 #   description = "Secret ID of Key Vault Certificate for load balancer SSL"
@@ -89,10 +89,10 @@ variable "lb_sku_capacity" {
   type        = number
 }
 
-variable "lb_subnet_id" {
-  description = "Subnet where Vault Application Gateway will be deployed"
-  type        = string
-}
+# variable "lb_subnet_id" {
+#   description = "Subnet where Vault Application Gateway will be deployed"
+#   type        = string
+# }
 
 variable "leader_tls_servername" {
   type        = string
@@ -168,10 +168,10 @@ variable "vault_address_prefix" {
   type        = string
 }
 
-variable "vault_application_security_group_ids" {
-  type        = list(string)
-  description = "Application Security Group ID for Vault VMs"
-}
+# variable "vault_application_security_group_ids" {
+#   type        = list(string)
+#   description = "Application Security Group ID for Vault VMs"
+# }
 
 variable "vault_license_filepath" {
   type        = string
@@ -184,10 +184,10 @@ variable "vault_version" {
   type        = string
 }
 
-variable "vault_subnet_id" {
-  description = "Subnet where Vault will be deployed"
-  type        = string
-}
+# variable "vault_subnet_id" {
+#   description = "Subnet where Vault will be deployed"
+#   type        = string
+# }
 
 variable "zones" {
   description = "Azure availability zones for deployment"
