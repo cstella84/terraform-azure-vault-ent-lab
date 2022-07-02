@@ -35,7 +35,6 @@ variable "instance_type" {
 }
 
 variable "key_vault_cert" {
-  default     = filebase64("certificate-to-import.pfx")
   description = "Base64 encoded .pfx certificate file to be imported into key vault"
   type        = string
 }
