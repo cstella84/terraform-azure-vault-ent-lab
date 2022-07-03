@@ -1,3 +1,11 @@
+variable "azurerm_client_tenant_id" {
+  type = string
+}
+
+variable "azurerm_client_object_id" {
+  type = string
+}
+
 variable "common_tags" {
   default     = {}
   description = "(Optional) Map of common tags for all taggable resources"

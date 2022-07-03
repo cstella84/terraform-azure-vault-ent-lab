@@ -17,10 +17,13 @@ module "resource_group" {
 module "key_vault" {
   source = "./modules/key_vault"
 
-  certificate          = var.key_vault_cert
-  common_tags          = var.common_tags
-  resource_group       = module.resource_group.resource_group
-  resource_name_prefix = var.resource_name_prefix
+  azurerm_client_config    = azurerm_client_config.current
+  certificate              = var.key_vault_cert
+  common_tags              = var.common_tags
+  resource_group           = module.resource_group.resource_group
+  resource_name_prefix     = var.resource_name_prefix
+  azurerm_client_tenant_id = data.azurerm_client_config.current.tenant_id
+  azurerm_client_object_id = data.azurerm_client_config.current.object_id
 }
 
 # Create virtual network

@@ -1,5 +1,3 @@
-data "azurerm_client_config" "current" {}
-
 resource "random_id" "key_vault_suffix" {
   byte_length = floor((24 - (length(var.resource_name_prefix) + 7)) / 2)
 }
@@ -10,13 +8,13 @@ resource "azurerm_key_vault" "vault" {
   resource_group_name = var.resource_group.name
   sku_name            = "standard"
   tags                = var.common_tags
-  tenant_id           = data.azurerm_client_config.current.tenant_id
+  tenant_id           = var.azurerm_client_tenant_id
 }
 
 resource "azurerm_key_vault_access_policy" "vault" {
   key_vault_id = azurerm_key_vault.vault.id
-  object_id    = data.azurerm_client_config.current.object_id
-  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = var.azurerm_client_object_id
+  tenant_id    = var.azurerm_client_tenant_id
 
   certificate_permissions = [
     "Backup",
