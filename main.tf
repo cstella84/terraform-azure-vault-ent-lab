@@ -17,7 +17,6 @@ module "resource_group" {
 module "key_vault" {
   source = "./modules/key_vault"
 
-  azurerm_client_config    = azurerm_client_config.current
   certificate              = var.key_vault_cert
   common_tags              = var.common_tags
   resource_group           = module.resource_group.resource_group
